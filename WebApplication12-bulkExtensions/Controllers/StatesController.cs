@@ -149,5 +149,29 @@ namespace WebApplication12_bulkExtensions.Controllers
         {
             return _context.States.Any(e => e.Id == id);
         }
+
+        // GET: States/BulkCreate
+        public IActionResult BulkCreate()
+        {
+            return View();
+        }
+
+        // POST: States/BulkCreate
+        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
+        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> BulkCreate([Bind("Id,Name,Abbreviation,Type,Country,Region,RegionName,Division,DivisionName,Flag")] State state)
+        {
+            if (ModelState.IsValid)
+            {
+                _context.Add(state);
+                await _context.SaveChangesAsync();
+                return RedirectToAction(nameof(Index));
+            }
+            return View(state);
+        }
+
+
     }
 }
