@@ -1,0 +1,84 @@
+1,Alabama,AL,state,USA,3,South,6,East South Central
+2,Alaska,AK,state,USA,4,West,9,Pacific
+3,Arizona,AZ,state,USA,4,West,8,Mountain
+4,Arkansas,AR,state,USA,3,South,7,West South Central
+5,California,CA,state,USA,4,West,9,Pacific
+6,Colorado,CO,state,USA,4,West,8,Mountain
+7,Connecticut,CT,state,USA,1,Northeast,1,New England
+8,Delaware,DE,state,USA,3,South,5,South Atlantic
+9,Florida,FL,state,USA,3,South,5,South Atlantic
+10,Georgia,GA,state,USA,3,South,5,South Atlantic
+11,Hawaii,HI,state,USA,4,West,9,Pacific
+12,Idaho,ID,state,USA,4,West,8,Mountain
+13,Illinois,IL,state,USA,2,Midwest,3,East North Central
+14,Indiana,IN,state,USA,2,Midwest,3,East North Central
+15,Iowa,IA,state,USA,2,Midwest,4,West North Central
+16,Kansas,KS,state,USA,2,Midwest,4,West North Central
+17,Kentucky,KY,state,USA,3,South,6,East South Central
+18,Louisiana,LA,state,USA,3,South,7,West South Central
+19,Maine,ME,state,USA,1,Northeast,1,New England
+20,Maryland,MD,state,USA,3,South,5,South Atlantic
+21,Massachusetts,MA,state,USA,1,Northeast,1,New England
+22,Michigan,MI,state,USA,2,Midwest,3,East North Central
+23,Minnesota,MN,state,USA,2,Midwest,4,West North Central
+24,Mississippi,MS,state,USA,3,South,6,East South Central
+25,Missouri,MO,state,USA,2,Midwest,4,West North Central
+26,Montana,MT,state,USA,4,West,8,Mountain
+27,Nebraska,NE,state,USA,2,Midwest,4,West North Central
+28,Nevada,NV,state,USA,4,West,8,Mountain
+29,New Hampshire,NH,state,USA,1,Northeast,1,New England
+30,New Jersey,NJ,state,USA,1,Northeast,2,Mid-Atlantic
+31,New Mexico,NM,state,USA,4,West,8,Mountain
+32,New York,NY,state,USA,1,Northeast,2,Mid-Atlantic
+33,North Carolina,NC,state,USA,3,South,5,South Atlantic
+34,North Dakota,ND,state,USA,2,Midwest,4,West North Central
+35,Ohio,OH,state,USA,2,Midwest,3,East North Central
+36,Oklahoma,OK,state,USA,3,South,7,West South Central
+37,Oregon,OR,state,USA,4,West,9,Pacific
+38,Pennsylvania,PA,state,USA,1,Northeast,2,Mid-Atlantic
+39,Rhode Island,RI,state,USA,1,Northeast,1,New England
+40,South Carolina,SC,state,USA,3,South,5,South Atlantic
+41,South Dakota,SD,state,USA,2,Midwest,4,West North Central
+42,Tennessee,TN,state,USA,3,South,6,East South Central
+43,Texas,TX,state,USA,3,South,7,West South Central
+44,Utah,UT,state,USA,4,West,8,Mountain
+45,Vermont,VT,state,USA,1,Northeast,1,New England
+46,Virginia,VA,state,USA,3,South,5,South Atlantic
+47,Washington,WA,state,USA,4,West,9,Pacific
+48,West Virginia,WV,state,USA,3,South,5,South Atlantic
+49,Wisconsin,WI,state,USA,2,Midwest,3,East North Central
+50,Wyoming,WY,state,USA,4,West,8,Mountain
+51,Washington DC,DC,capitol,USA,3,South,5,South Atlantic
+52,Puerto Rico,PR,commonwealth,USA,,,,
+53,U.S. Virgin Islands,VI,territory,USA,,,,
+54,American Samoa,AS,territory,USA,,,,
+55,Guam,GU,territory,USA,,,,
+56,Northern Mariana Islands,MP,commonwealth,USA,,,,
+57,Alberta,AB,province,Canada,,,,
+58,British Columbia,BC,province,Canada,,,,
+59,Manitoba,MB,province,Canada,,,,
+60,New Brunswick,NB,province,Canada,,,,
+61,Newfoundland and Labrador,NL,province,Canada,,,,
+62,Nova Scotia,NS,province,Canada,,,,
+63,Ontario,ON,province,Canada,,,,
+64,Prince Edward Island,PE,province,Canada,,,,
+65,Quebec,QC,province,Canada,,,,
+66,Saskatchewan,SK,province,Canada,,,,
+67,Northwest Territories,NT,territory,Canada,,,,
+68,Nunavut,NU,territory,Canada,,,,
+69,Yukon Territory,YT,territory,Canada,,,,
+70,Baker Island,,minor,USA,,,,
+71,Howland Island,,minor,USA,,,,
+72,Jarvis Island,,minor,USA,,,,
+73,Johnston Atoll,,minor,USA,,,,
+74,Midway Islands,,minor,USA,,,,
+75,Wake Island,,minor,USA,,,,
+76,Palmyra Atoll,,minor,USA,,,,
+77,Kingman Reef,,minor,USA,,,,
+78,Navassa Island,,minor,USA,,,,
+79,Serranilla Bank,,minor,USA,,,,
+80,Bajo Nuevo Bank,,minor,USA,,,,
+81,Armed Forces Americas,AA,military,USA,,,,
+82,Armed Forces Europe,AE,military,USA,,,,
+83,Armed Forces Pacific,AP,military,USA,,,,
+84,,,,,,,,

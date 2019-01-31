@@ -2,21 +2,26 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using EFCore.BulkExtensions;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using WebApplication12_bulkExtensions.Data;
 using WebApplication12_bulkExtensions.Models;
+using System.IO;
+using Microsoft.AspNetCore.Hosting;
 
 namespace WebApplication12_bulkExtensions.Controllers
 {
     public class StatesController : Controller
     {
         private readonly ApplicationDbContext _context;
+        private readonly IHostingEnvironment _hostingEnvironment;
 
-        public StatesController(ApplicationDbContext context)
+        public StatesController(ApplicationDbContext context, IHostingEnvironment hostingEnvironment)
         {
             _context = context;
+            _hostingEnvironment = hostingEnvironment;
         }
 
         // GET: States
@@ -161,15 +166,51 @@ namespace WebApplication12_bulkExtensions.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> BulkCreate([Bind("Id,Name,Abbreviation,Type,Country,Region,RegionName,Division,DivisionName,Flag")] State state)
+        public async Task<IActionResult> BulkCreate(String fileLocation)
         {
-            if (ModelState.IsValid)
+            List<State> statesToImport = new List<State>();
+            string filePath = string.Empty;
+
+            if (fileLocation != null)
             {
-                _context.Add(state);
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                string webRootPath = _hostingEnvironment.WebRootPath;
+                filePath = webRootPath + "\\data\\" + fileLocation;
+
+                string fileData = await System.IO.File.ReadAllTextAsync(filePath);
+
+                foreach (string row in fileData.Split('\n'))
+                {
+                    if (!string.IsNullOrEmpty(row))
+                    {
+                        Guid obj = Guid.NewGuid();
+
+                        statesToImport.Add(new State
+                        {
+                           
+                            Id = Convert.ToString(obj), //Convert.ToString(new Guid()),
+                            Name = row.Split(',')[0],
+                            Abbreviation = row.Split(',')[1],
+                            Type = row.Split(',')[2],
+                            Country = row.Split(',')[3]
+                            // Region = Convert.ToInt32(row.Split(',')[5]),
+                            // RegionName = row.Split(',')[6],
+                            // Division = Convert.ToInt32(row.Split(',')[7]),
+                            // DivisionName = row.Split(',')[8]
+                        });
+                    }
+                }
+                // logically, we want to toss back a list view of what the data looks like, then the user can confirm the transaction
+                // similar to a delete function...
+
+                using (var transaction = _context.Database.BeginTransaction())
+                {
+                    _context.BulkInsert(statesToImport);
+                    transaction.Commit();
+                }
             }
-            return View(state);
+
+            return View();
+            
         }
 
 

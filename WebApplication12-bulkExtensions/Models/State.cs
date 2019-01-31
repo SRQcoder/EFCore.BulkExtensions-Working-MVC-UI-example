@@ -17,11 +17,11 @@ namespace WebApplication12_bulkExtensions.Models
 
         public string Country { get; set; }
 
-        public int Region { get; set; }
+        public int? Region { get; set; }
 
         public string RegionName { get; set; }
 
-        public int Division { get; set; }
+        public int? Division { get; set; }
 
         public string DivisionName { get; set; }
 
