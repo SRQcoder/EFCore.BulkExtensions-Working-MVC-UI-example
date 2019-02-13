@@ -1,0 +1,32 @@
+﻿@model WebApplication12_bulkExtensions.Models.State
+
+@{
+    ViewData["Title"] = "BulkCreateJson";
+}
+
+<h1>BulkCreateJson</h1>
+
+<h4>State</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="BulkCreateJson" method="post">
+            <div class="form-group">
+                <label class="control-label">Add File Name to Load Data...</label>
+                <input type ="text" name="fileLocation" class="form-control" />
+            </div>
+
+            <div class="form-group">
+                <input type="submit" value="Submit" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to State List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

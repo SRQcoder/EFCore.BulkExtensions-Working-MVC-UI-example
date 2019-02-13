@@ -10,6 +10,7 @@ using WebApplication12_bulkExtensions.Data;
 using WebApplication12_bulkExtensions.Models;
 using System.IO;
 using Microsoft.AspNetCore.Hosting;
+using Newtonsoft.Json;
 
 namespace WebApplication12_bulkExtensions.Controllers
 {
@@ -200,7 +201,7 @@ namespace WebApplication12_bulkExtensions.Controllers
                     }
                 }
                 // logically, we want to toss back a list view of what the data looks like, then the user can confirm the transaction
-                // similar to a delete function...
+                // similar to a delete function, but with a table view of things....
 
                 using (var transaction = _context.Database.BeginTransaction())
                 {
@@ -212,6 +213,68 @@ namespace WebApplication12_bulkExtensions.Controllers
             return View();
             
         }
+
+        // GET: States/BulkCreate
+        public IActionResult BulkCreateJson()
+        {
+            return View();
+        }
+
+        // POST: States/BulkCreate
+        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
+        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> BulkCreateJson(String fileLocation)
+        {
+            List<State> statesToImport = new List<State>();
+            string filePath = string.Empty;
+
+            if (fileLocation != null)
+            {
+                string webRootPath = _hostingEnvironment.WebRootPath;
+                filePath = webRootPath + "\\data\\" + fileLocation;
+
+                string fileData = await System.IO.File.ReadAllTextAsync(filePath);
+
+
+
+                var jsonData = JsonConvert.DeserializeObject<List<StateJson>>(fileData);
+
+                foreach (var state in jsonData)
+                {
+                    if (state != null)
+                    {
+                        Guid obj = Guid.NewGuid();
+
+                        statesToImport.Add(new State
+                        {
+
+                            Id = Convert.ToString(obj), //Convert.ToString(new Guid()),
+                            Name = state.Name,
+                            Abbreviation = state.Abbreviation,
+                            Type = state.Type,
+                            Country = state.Country,
+                            Region = Convert.ToInt32(state.Region),
+                            // RegionName = row.Split(',')[6],
+                            // Division = Convert.ToInt32(row.Split(',')[7]),
+                            // DivisionName = row.Split(',')[8]
+                        });
+                    }
+                }
+
+                using (var transaction = _context.Database.BeginTransaction())
+                {
+                    _context.BulkInsert(statesToImport, new BulkConfig { PreserveInsertOrder = true } );
+                    transaction.Commit();
+                }
+            }
+
+            return View();
+
+        }
+
+
 
 
     }
