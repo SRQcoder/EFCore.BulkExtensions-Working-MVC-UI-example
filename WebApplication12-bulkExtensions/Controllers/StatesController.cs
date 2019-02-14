@@ -263,9 +263,11 @@ namespace WebApplication12_bulkExtensions.Controllers
                     }
                 }
 
+                statesToImport = statesToImport.OrderBy(x => x.Name).ToList();
+
                 using (var transaction = _context.Database.BeginTransaction())
                 {
-                    _context.BulkInsert(statesToImport, new BulkConfig { PreserveInsertOrder = true } );
+                    _context.BulkInsertOrUpdate(statesToImport, new BulkConfig { PreserveInsertOrder = true });
                     transaction.Commit();
                 }
             }
